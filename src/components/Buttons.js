@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 function AddButton (props) {
     return (
-        <button type={props.type} onClick={props.clicked}>{props.text}</button>
+        <button type={props.type} onClick={props.addContact}>{props.text}</button>
     );
 }
 

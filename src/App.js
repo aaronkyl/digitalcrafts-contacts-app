@@ -48,13 +48,13 @@ class App extends Component {
     let newContactsArray = this.state.contacts.slice();
     let newContact = {
       id: this.state.noOfContacts + 1,
-      name: 'testname', //contactDetails.name,
-      email: 'testemail', //contactDetails.email,
-      phone: 'testphone', //contactDetails.phone,
-      address: 'testaddress', //contactDetails.address,
-      city: 'testcity', //contactDetails.city,
-      state: 'teststate', //contactDetails.state,
-      zip: 'testzip' //contactDetails.zip
+      name: contactDetails.name,
+      email: contactDetails.email,
+      phone: contactDetails.phone,
+      address: contactDetails.address,
+      city: contactDetails.city,
+      state: contactDetails.state,
+      zip: contactDetails.zip
     };
     newContactsArray.push(newContact);
     this.setState({
@@ -63,10 +63,15 @@ class App extends Component {
     });
   }
   
+  sortContacts() {
+    let sortedList = this.state.contacts.slice();
+    sortedList = sortedList.sort((a, b) => a.name > b.name);
+    return sortedList;
+  }
+  
   render() {
-    
     const handleAddContact = this.addContact.bind(this);
-    
+    const sortedContacts = this.sortContacts();
     return (
       <div className="App">
         <header className="App-header">
@@ -77,7 +82,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <Form addContact={handleAddContact}/>
-        <ContactsList contacts={this.state.contacts}/>
+        <ContactsList contacts={sortedContacts}/>
       </div>
     );
   }

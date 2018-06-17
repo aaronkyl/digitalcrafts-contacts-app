@@ -26,7 +26,13 @@ class Form extends Component {
         this.setState({[key]: event.target.value});
     }
     
+    addContact() {
+        this.props.addContact(this.state);
+    }
+    
     render(props) {
+        
+        const handleAddContact = this.addContact.bind(this);
         return (
             <div>
                 <TextInput type="text" name="name" placeholder="Name" onChange={e=>this.updateState(e, 'name')} value={this.state.name} />
@@ -36,7 +42,7 @@ class Form extends Component {
                 <TextInput type="text" name="city" placeholder="City" onChange={e=>this.updateState(e, 'city')} value={this.state.city} />
                 <TextInput type="text" name="state" placeholder="State" onChange={e=>this.updateState(e, 'state')} value={this.state.state} />
                 <TextInput type="number" name="zip" placeholder="Zip" onChange={e=>this.updateState(e, 'zip')} value={this.state.zip} />
-                <AddButton type="button" text="Add Contact" addContact={this.props.addContact}/>
+                <AddButton type="button" text="Add Contact" addContact={handleAddContact}/>
             </div>
         );
     }
