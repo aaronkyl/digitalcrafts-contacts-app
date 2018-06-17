@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import TextInput from './Inputs.js';
-import AddButton from './Buttons.js';
+// import AddButton from './Buttons.js';
+
+function AddButton (props) {
+    return (
+        <button type={props.type} onClick={props.addContact}>{props.text}</button>
+    );
+}
 
 class Form extends Component {
     constructor() {
@@ -30,7 +36,7 @@ class Form extends Component {
                 <TextInput type="text" name="city" placeholder="City" onChange={e=>this.updateState(e, 'city')} value={this.state.city} />
                 <TextInput type="text" name="state" placeholder="State" onChange={e=>this.updateState(e, 'state')} value={this.state.state} />
                 <TextInput type="number" name="zip" placeholder="Zip" onChange={e=>this.updateState(e, 'zip')} value={this.state.zip} />
-                <AddButton type="button" text="Add Contact" clicked={this.props.clicked}/>
+                <AddButton type="button" text="Add Contact" addContact={this.props.addContact}/>
             </div>
         );
     }

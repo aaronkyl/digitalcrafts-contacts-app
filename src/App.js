@@ -48,13 +48,13 @@ class App extends Component {
     let newContactsArray = this.state.contacts.slice();
     let newContact = {
       id: this.state.noOfContacts,
-      name: contactDetails.name,
-      email: contactDetails.email,
-      phone: contactDetails.phone,
-      address: contactDetails.address,
-      city: contactDetails.city,
-      state: contactDetails.state,
-      zip: contactDetails.zip
+      name: 'testname', //contactDetails.name,
+      email: 'testemail', //contactDetails.email,
+      phone: 'testphone', //contactDetails.phone,
+      address: 'testaddress', //contactDetails.address,
+      city: 'testcity', //contactDetails.city,
+      state: 'teststate', //contactDetails.state,
+      zip: 'testzip' //contactDetails.zip
     };
     newContactsArray.push(newContact);
     this.setState({
@@ -63,21 +63,20 @@ class App extends Component {
     });
   }
   
-  clicked() {
-    console.log("clicked");
-  }
-  
   render() {
+    
+    const handleAddContact = this.addContact.bind(this);
+    
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro" onClick={this.clicked}>
+        <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <Form clicked={this.clicked}/>
+        <Form addContact={handleAddContact}/>
         <ContactsList contacts={this.state.contacts}/>
       </div>
     );
