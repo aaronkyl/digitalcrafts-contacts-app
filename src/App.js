@@ -47,7 +47,7 @@ class App extends Component {
   addContact(contactDetails) {
     let newContactsArray = this.state.contacts.slice();
     let newContact = {
-      id: this.state.noOfContacts,
+      id: this.state.noOfContacts + 1,
       name: 'testname', //contactDetails.name,
       email: 'testemail', //contactDetails.email,
       phone: 'testphone', //contactDetails.phone,
